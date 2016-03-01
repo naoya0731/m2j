@@ -1,0 +1,19 @@
+{
+  "name": "m2j",
+  "version": "1.0.0",
+  "description": "",
+  "main": "m2j.js",
+  "scripts": {
+    "test": "node m2j.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/naoya0731/m2j.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naoya0731/m2j/issues"
+  },
+  "homepage": "https://github.com/naoya0731/m2j#readme"
+}

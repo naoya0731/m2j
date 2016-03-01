@@ -1,0 +1,20 @@
+{
+    "title": "ActiveAdmin",
+    "category": "Ruby",
+    "headings": [
+        "Listing scopes",
+        "Sidebar filters",
+        "Custom actions",
+        "Columns",
+        "Other helpers",
+        "Disabling 'new post'"
+    ],
+    "bodies": [
+        "Allows you to filter listings by a certain scope.\n\nscope :draft\nscope :for_approval\n\nscope :public, if: ->{ current_admin_user.can?(...) }\nscope \"Unapproved\", :pending\nscope(\"Published\") { |books| books.where(:published: true) }\n\n",
+        "filter :email\nfilter :username\n\n",
+        "You can define custom actions for models.\n\nbefore_filter only: [:show, :edit, :publish] do\n  @post = Post.find(params[:id])\nend\n\nMake the route:\n\nmember_action :publish, method: :put do\n  @post.publish!\n  redirect_to admin_posts_path, notice: \"The post '#{@post}' has been published!\"\nend\n\nLink it in the index:\n\nindex do\n  column do |post|\n    link_to 'Publish', publish_admin_post_path(post), method: :put\n  end\nend\n\nAnd link it in show/edit:\n\naction_item only: [:edit, :show] do\n  @post = Post.find(params[:id])\n  link_to 'Publish', publish_admin_post_path(post), method: :put\nend\n\n",
+        "column :foo\n\ncolumn :title, sortable: :name do |post|\n  strong post.title\nend\n\n",
+        "# Grey, green, orange, red\nstatus_tag \"Done\"\nstatus_tag \"Finished\", :ok\nstatus_tag \"You\", :warn\nstatus_tag \"Failed\", :error\n\n",
+        "ActiveAdmin.register Post do\n  actions :index, :edit\n  # or: config.clear_action_items!\nend\n\n"
+    ]
+}
